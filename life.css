@@ -1,0 +1,14 @@
+div {
+	border: 1px solid #000;
+	border-radius: 4px;
+	padding: 4px;
+	margin: 2px;
+}
+
+.column {
+	width: 300px;
+}
+
+input[type="text"] {
+	width: 50px
+}
