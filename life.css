@@ -20,7 +20,7 @@ input[type="text"] {
 	border: 1px solid #000;
 }
 
-.dead {
+.alive {
 	background-color: #000;
 }
 
