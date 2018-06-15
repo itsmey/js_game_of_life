@@ -1,11 +1,11 @@
 div.header {
-	font-size: 2em;
+	font-size: 1.5em;
 	text-align: center;
-	background-color: lightgreen;
+	margin: 30px auto;
+	width: 500px;
 }
 
 div.controlPanel {
-	background-color: lemonchiffon;
 }
 
 div.column {
@@ -15,7 +15,7 @@ div.column {
 	margin: 4px auto;
 	width: 300px;
 	text-align: center;
-	background-color: snow;
+	background-color: aliceblue;
 }
 
 input[type="text"] {
@@ -23,8 +23,8 @@ input[type="text"] {
 }
 
 .cell {
-	width: 20px;
-	height: 20px;
+	width: 18px;
+	height: 18px;
 	margin: 1px;
 	border: 1px solid black;
 	border-radius: 2px;
@@ -34,14 +34,19 @@ input[type="text"] {
 }
 
 .alive {
-	background-color: yellow;
+	background-color: blue;
 }
 
-.field {
-	margin: 50px;
+#field {
+	padding: 35px;
+}
+
+#fieldContainer {
+	margin: 35px;
+	background-color: aliceblue;
 }
 
 .cellRow {
 	text-align: center;
-	background-color: aliceblue;
 }
+

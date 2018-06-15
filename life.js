@@ -1,4 +1,4 @@
-var DEFAULT_SIZE = 16;
+var DEFAULT_SIZE = 20;
 var DEFAULT_INTERVAL = 0.25;
 
 var size;
@@ -28,9 +28,7 @@ function random0or1() {
 }
 
 function randomMinus1or1() {
-    var r = Math.round(Math.random()) ? 1 : -1; 
-    console.log(r);
-    return r;
+    return Math.round(Math.random()) ? 1 : -1; 
 }
 
 function randomUpToN(n) {
