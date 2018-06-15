@@ -15,6 +15,7 @@ div.column {
 	margin: 4px auto;
 	width: 300px;
 	text-align: center;
+	background-color: snow;
 }
 
 input[type="text"] {
