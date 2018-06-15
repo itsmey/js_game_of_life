@@ -1,12 +1,20 @@
+div.header {
+	font-size: 2em;
+	text-align: center;
+	background-color: lightgreen;
+}
+
+div.controlPanel {
+	background-color: lemonchiffon;
+}
+
 div.column {
 	border: 1px solid #000;
 	border-radius: 4px;
 	padding: 4px;
-	margin: 2px;
-}
-
-.column {
+	margin: 4px auto;
 	width: 300px;
+	text-align: center;
 }
 
 input[type="text"] {
@@ -14,15 +22,25 @@ input[type="text"] {
 }
 
 .cell {
-	width: 30px;
-	height: 30px;
+	width: 20px;
+	height: 20px;
+	margin: 1px;
+	border: 1px solid black;
+	border-radius: 2px;
+	background-color: ghostwhite;
 	display: inline-block;
-	border: 1px solid #000;
+	vertical-align: middle;
 }
 
 .alive {
-	background-color: #000;
+	background-color: yellow;
+}
+
+.field {
+	margin: 50px;
 }
 
 .cellRow {
+	text-align: center;
+	background-color: aliceblue;
 }

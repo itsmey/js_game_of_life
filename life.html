@@ -7,29 +7,32 @@
         <title>Game of Life</title>
     </head>
     <body>
-        <div id="manualMode" class="column">
-            <input type="radio" id="modeManual" name="mode">Manual mode</input>
-            <br>
-            <input type="button" id="nextStepButton" value="Next step">
-        </div>
-        <div id="automaticMode" class="column">
-            <input type="radio" id="modeAutomatic" name="mode">Automatic mode</input>
-            <br>
-            Time interval between steps:<input id="interval" type="text"> 
-            <br>
-            <input type="button" id="startButton" value="Start">
-            <input type="button" id="stopButton"  value="Stop">
-        </div>
-        <div id="settings" class="column">
-            Field size:<input id="size" type="text"> 
-            <br>
-            <input type="button" id="clearButton" value="Clear field">
-            <input type="button" id="reconstructButton" value="Reconstruct field">
-            <div id="generationLabel">generation:</div>
-        </div>
-        <div id="presets" class="column">
-            <input type="button" id="randomButton" value="Random">
-            <input type="button" id="gliderButton" value="Glider">
+        <div class="header">Conway's Game of Life Demonstration</div>
+        <div class="controlPanel">
+            <div id="manualMode" class="column">
+                <input type="radio" id="modeManual" name="mode">Manual mode</input>
+                <br>
+                <input type="button" id="nextStepButton" value="Next step">
+            </div>
+            <div id="automaticMode" class="column">
+                <input type="radio" id="modeAutomatic" name="mode">Automatic mode</input>
+                <br>
+                Time interval between steps:<input id="interval" type="text"> 
+                <br>
+                <input type="button" id="startButton" value="Start">
+                <input type="button" id="stopButton"  value="Stop">
+            </div>
+            <div id="settings" class="column">
+                Field size:<input id="size" type="text"> 
+                <br>
+                <input type="button" id="clearButton" value="Clear field">
+                <input type="button" id="reconstructButton" value="Reconstruct field">
+                <div id="generationLabel">generation:</div>
+            </div>
+            <div id="presets" class="column">
+                <input type="button" id="randomButton" value="Random">
+                <input type="button" id="gliderButton" value="Glider">
+            </div>
         </div>
         <div id="field">
         </div>
