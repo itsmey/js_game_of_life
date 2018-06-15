@@ -1,5 +1,5 @@
 var DEFAULT_SIZE = 16;
-var DEFAULT_INTERVAL = 0.5;
+var DEFAULT_INTERVAL = 0.25;
 
 var size;
 var interval;
@@ -11,6 +11,9 @@ var startButton = document.getElementById('startButton');
 var stopButton = document.getElementById('stopButton');
 var nextStepButton = document.getElementById('nextStepButton');
 var clearButton = document.getElementById('clearButton');
+var reconstructButton = document.getElementById('reconstructButton');
+var randomButton = document.getElementById('randomButton');
+var gliderButton = document.getElementById('gliderButton');
 var intervalInput = document.getElementById('interval');
 var sizeInput = document.getElementById('size');
 var modeManual = document.getElementById('modeManual');
@@ -28,17 +31,22 @@ function modeManualClick() {
 
 function modeAutomaticClick() {
     startButton.disabled = false;
-    stopButton.disabled = false;
+    stopButton.disabled = true;
     intervalInput.disabled = false;
     nextStepButton.disabled = true;
 }
 
 function start() {
+    stop();
+    startButton.disabled = true;
+    stopButton.disabled = false;
     interval = Number(intervalInput.value);
     timerId = setInterval(function() { nextGeneration() }, interval * 1000);
 }
 
 function stop() {
+    startButton.disabled = false;
+    stopButton.disabled = true;
     if (timerId != undefined) {
         clearInterval(timerId);
     }
@@ -49,11 +57,21 @@ function nextStep() {
 }
 
 function clear() {
-    generation = 0;
-    updateGenerationLabel();
     for (var r = 0; r < size; r++) 
         for (var c = 0; c < size; c++) 
             makeDead(cells[r][c]);
+}
+
+function reconstruct() {
+    if (modeAutomatic.checked)
+        stop();
+    generation = 0;
+    updateGenerationLabel();
+    var l = field.children.length;
+    for (var i = 0; i < l; i++) {
+        field.removeChild(field.children[0]);
+    }
+    constructField();
 }
 
 function cellClick() {
@@ -162,6 +180,59 @@ function normalizeCoord(coord) {
     return coord;
 }
 
+function random0or1() {
+    return Math.round(Math.random());
+}
+
+function randomMinus1or1() {
+    var r = Math.round(Math.random()) ? 1 : -1; 
+    console.log(r);
+    return r;
+}
+
+function randomUpToN(n) {
+    return Math.floor(Math.random() * n);
+}
+
+function random() {
+    clear();
+    for (var r = 0; r < size; r++) 
+        for (var c = 0; c < size; c++) {
+            if (random0or1()) {
+                makeAlive(cells[r][c]);
+            } else {
+                makeDead(cells[r][c]);
+            }
+        }
+}
+
+function drawMap(map) {
+    var col = randomUpToN(size);
+    var row = randomUpToN(size);
+    var signR = randomMinus1or1();
+    var signC = randomMinus1or1();
+    var rotate = random0or1();
+    for (var r = 0; r < map.length; r++) 
+        for (var c = 0; c < map[r].length; c++) {
+            var rc = rotate ? row + r * signR : col + c * signC;
+            var cc = rotate ? col + c * signC : row + r * signR;
+            nrow = normalizeCoord(rc);
+            ncol = normalizeCoord(cc);
+            if (map[r][c] == "x") {
+                makeAlive(cells[nrow][ncol]);
+            } else {
+                makeDead(cells[nrow][ncol]);
+            }
+        }
+}
+
+function glider() {
+    var map = ["x  ",
+               "x x",
+               "xx "];
+    drawMap(map);               
+}
+
 function initialize() {
     sizeInput.value = DEFAULT_SIZE;
     intervalInput.value = DEFAULT_INTERVAL;
@@ -173,8 +244,11 @@ function initialize() {
     stopButton.onclick = stop;
     nextStepButton.onclick = nextStep;
     clearButton.onclick = clear;
+    reconstructButton.onclick = reconstruct;
+    randomButton.onclick = random;
+    gliderButton.onclick = glider;
 
-    modeManual.click();
+    modeAutomatic.click();
     
     constructField();
 }
